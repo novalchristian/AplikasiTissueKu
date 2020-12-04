@@ -9,9 +9,7 @@ const Splash = ({navigation}) => {
     }, [navigation]);
     return(
         <View style={styles.container}>
-            <Text style={styles.text}>APLIKASI</Text>
-            <Text style={styles.text}>PENDAKIAN</Text>
-            <Text style={styles.text}>GUNUNG</Text>
+            <Text style={styles.text}>TISSUE KU</Text>
         </View>
     )
 }

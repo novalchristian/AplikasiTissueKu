@@ -1,94 +1,164 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions, TouchableOpacity, Image, ScrollView, } from 'react-native';
-import {
-    GunungBromo,
-    GunungIjen,
-    GunungPrau,
-    GunungRinjani,
-    GunungSemeru}
-from '../../assets';
+import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity, Dimensions, StatusBar } from 'react-native';
+import {paseo, livi, tessa, nice, toply} from '../../assets';
 
 let data = [
     {
         key: 1,
-        gambar: GunungBromo,
-        gunung: 'Gunung Bromo',
-        keterangan: 'Gunung yang satu ini sudah sangat terkenal di tengah masyarakat karena pemandangannya yang begitu indah. Gunung Bromo memiliki ketinggian 2.329 mdpl dan terletak di Jawa Timur.'
+        image: paseo,
+        name: 'Paseo',
+        price1: '50 Sheets = 5k',
+        price2: '250 Sheets = 20k',
+        keterangan: 'Terbuat dari 100% serat alami, tissue paseo memiliki kekuatan dan daya serap serta sentuhan kelembutan untuk anda. Cocok digunakan untuk seluruh keluarga karena terbuat dari bahan dasar yang higienis, lembut dan alami. Nikmatilah kenyamanan dan kelembutan dari tissue kesayangan anda.'
     },
     {
         key: 2,
-        gambar: GunungPrau,
-        gunung: 'Gunung Prau',
-        keterangan: 'Gunung Prau adalah gunung yang terletak di Dataran Tinggi Dieng. Gunung Prau dengan ketinggian 2.565 mdpl menjadi objek wisata yang populer di kalangan para turis, baik dari berbagai kota di Indonesia, maupun mancanegara.'
+        image: livi,
+        name: 'Livi',
+        price1: '50 Sheets = 4k',
+        price2: '250 Sheets = 15k',
+        keterangan: 'Didistribusikan ke 37 negara di lima benua, Livi mempersembahkan hanya yang terbaik untuk menjawab kebutuhan tisu dunia. Livi memiliki standar tinggi dalam menjaga kehigienisan dan kualitas produk tanpa mengurangi nilai ekonomis maupun layanannya.'
     },
     {
         key: 3,
-        gambar: GunungIjen,
-        gunung: 'Gunung Ijen',
-        keterangan: 'Gunung Ijen adalah gunung berapi aktif yang terletak di Jawa Timur, tepatnya di perbatasan Kabupaten Banyuwangi dan Kabupaten Bondowoso. Gunung Ijen sendiri memiliki ketinggian 2.799 mdpl.'
+        image: tessa,
+        name: 'Tessa',
+        price1: '50 Sheets = 5k',
+        price2: '250 Sheets = 20k',
+        keterangan: 'Tisu Wajah Tessa 250 sheet Natural Soft, dengan kualitas Interfold Facial Tissue dan Harga yang sangat terjangkau membuat Tissue Facial Tessa tidak di ragukan lagi di kelasnya. Tisu terbuat dari bahan serat alami dan berkualitas lembut, daya serap tinggi cocok di gunakan di rumah, di kantor, di mobil dan segala aktifitas.'
     },
     {
         key: 4,
-        gambar: GunungSemeru,
-        gunung: 'Gunung Semeru',
-        keterangan: 'Gunung Semeru adalah gunung tertinggi yang ada di Pulau Jawa. Ketinggiannya mencapai 3.676 mdpl. Banyak spot menarik yang ada di Gunung Semeru, seperti Danau Ranu Kumbolo, Tanjakan Cinta, dan Oro Oro Ombo.'
+        image: nice,
+        name: 'Nice',
+        price1: '50 Sheets = 3k',
+        price2: '250 Sheets = 17k',
+        keterangan: 'Nice terbuat dari 100% serat alami (Virgin Plantation Pulp), diproses secara higienis, menghasilkan tissue halus berkualitas tinggi bagi keluarga anda. Kualitas tissue Nice sudah menjadi tradisi. Depkes RI PD 0102290366.'
     },
     {
         key: 5,
-        gambar: GunungRinjani,
-        gunung: 'Gunung Rinjani',
-        keterangan: 'Gunung Rinjani adalah gunung berapi yang memiliki ketinggian 3.726 mdpl. Gunung ini terletak di Pulau Lombok, Nusa Tenggara Barat.'
-    }
+        image: toply,
+        name: 'Toply',
+        price1: '50 Sheets = 7k',
+        price2: '250 Sheets = 16k',
+        keterangan: 'Terbuat dari 100% serat alami (Virgin Pulp) yang higienis, lembut dan nyaman. Dengan tekstur yang cocok untuk menemani waktu makan Anda,  sangat aman dan efektif untuk menyerap minyak dan air.'
+    },
 ]
 
 export default function Home({navigation}) {
-    const onPressed = () => {
-        navigation.navigate('Detail');
+    const onPressed = (data) => {
+        navigation.navigate('HomeDetail', data);
     };
     return (
         <View style={styles.container}>
-            <View style={styles.topWrapper}>
-                <Text style={styles.topTextWrapper}>Kemana anda ingin mendaki ?</Text>
-            </View>
-
-            {/* lIST */}
-            <ScrollView style={{marginBottom: 100}}>
-                {data.map((e) => (
-                    <TouchableOpacity key={e.key} onPress={onPressed}>
-                        <View style={{backgroundColor: '#fff', marginVertical: 10, flexDirection: 'row', paddingVertical: 10, paddingHorizontal: 20}}>
-                            <View style={{justifyContent: 'center'}}>
-                                <Image source={e.gambar} style={styles.image}/>
-                            </View>
-                            <View style={{flexDirection: 'column', paddingLeft: 10}}>
-                                <Text style={{fontSize:18, fontWeight: 'bold'}}>{e.gunung}</Text>
-                                <View style={{width: 250}}>
-                                    <Text>{e.keterangan}</Text>
+            <StatusBar backgroundColor='#333335' barStyle="light-content" translucent/>
+            <View style={styles.wrapper}>
+            <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+                    {data.map((data) => (
+                        <View key={data.key} style={styles.listWrapper}>
+                                <View style={styles.imageWrapper}>
+                                    <Image style={styles.listImage} source={data.image}/> 
                                 </View>
-                            </View>
+                                <View style={styles.listMidWrapper}>
+                                    <Text style={styles.midTextName}>{data.name}</Text>
+                                    <Text style={styles.midTextCaption}>{data.price1}</Text>
+                                    <Text style={styles.midTextCaption}>{data.price2}</Text>
+                                </View>
+                                <TouchableOpacity style={styles.button} onPress={() => onPressed(data)}>
+                                    <Text style={styles.buttonText}>Buy</Text>
+                                </TouchableOpacity>
                         </View>
-                    </TouchableOpacity>
-                ))}
-            </ScrollView>
+                    ))}
+                </ScrollView>
+            </View>
         </View>
     )
 }
-const {width} = Dimensions.get('screen');
+
+const width = Dimensions.get('window').width/4.5;
+const height = Dimensions.get('window').height/8.5;
 const styles = StyleSheet.create({
-    image: {
-        width: 100,
-        height: 100,
-        borderRadius: 30,
-      },
-    topWrapper:{
-        height: 100, 
-        backgroundColor: 'white', 
-        justifyContent: 'center', 
-        alignItems: 'center'
+    buttonText:{
+        color:'orange', 
+        fontWeight:'bold',
+        fontSize:20
     },
-    topTextWrapper:{
-        fontSize: 20, 
-        fontWeight: 'bold', 
-        color: 'brown'
+    button:{
+        flex:0, 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        marginLeft:15,
+        marginRight:10
+    },
+    midTextCaption:{
+        marginTop:2,
+        color:'grey', 
+        textAlign:'justify',
+        color:'white'
+    },
+    midTextName:{
+        fontSize:25, 
+        fontWeight: 'bold',
+        color:'white'
+    },
+    listMidWrapper:{
+        flex:2, 
+        marginLeft:10,
+        paddingTop:10
+    },
+    listImage:{
+        width, 
+        height, 
+        borderRadius:10
+    },
+    imageWrapper:{
+        flex:1, 
+        justifyContent: 'center', 
+        backgroundColor:'white',
+        alignItems:'center',
+        borderRadius:10
+    },
+    sessionTitle:{
+        fontSize:20, 
+        fontWeight: 'bold'
+    },
+    sessionWrapper:{
+        marginTop:15
+    },
+    image:{
+        width: width + 50, 
+        height: width + 30,
+    },
+    headerTextWrapper:{
+        padding:10, 
+        marginTop:7
+    },
+    headerWrapper:{
+        borderRadius: 20, 
+        backgroundColor: '#34ebd8', 
+        flexDirection: 'row', 
+        justifyContent: 'space-between', 
+        padding:20
+    },
+    wrapper:{
+        padding: 20
+    },
+    container:{
+        flex:1,
+        backgroundColor: '#171717'
+    },
+    headerText:{
+        color: '#fcfcfc', 
+        fontSize:22, 
+        fontWeight: 'bold'
+    },
+    listWrapper:{
+        marginTop: 15,
+        flexDirection: 'row',
+        backgroundColor: '#171717',
+        padding:10,
+        borderRadius:20,
+        borderWidth: 1,
+        borderColor: '#d1d1d1',
     }
-  });
-  
+})

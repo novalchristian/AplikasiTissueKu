@@ -16,20 +16,27 @@ import SplashPage from '../pages/splash.page';
 const HomeStack = createStackNavigator();
 function Home() {
   return (
-    <HomeStack.Navigator>
+    <HomeStack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: '#333335',
+      },
+      headerTintColor: 'white',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+        fontSize:20
+      },
+    }}
+    >
       <HomeStack.Screen
         name="Home"
         component={HomePage}
         options={{
+          headerTitle:'Home',
+        
         }}
       />
-      <HomeStack.Screen
-        name="Detail"
-        component={HomeDetailPage}
-        options={{
-            headerTitle: 'Form',
-        }}
-      />
+      
     </HomeStack.Navigator>
   );
 }
@@ -37,7 +44,18 @@ function Home() {
 const ProfileStack = createStackNavigator();
 function Profile() {
     return (
-      <ProfileStack.Navigator>
+      <ProfileStack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#333335',
+        },
+        headerTintColor: 'white',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+          fontSize:20
+        },
+      }}
+      >
         <ProfileStack.Screen
           name="Profile"
           component={ProfilePage}
@@ -52,7 +70,18 @@ function Profile() {
 const Tab = createBottomTabNavigator();
 function Navigation(){
   return(
-    <Tab.Navigator>
+    <Tab.Navigator
+    tabBarOptions={{
+      activeTintColor: 'white',
+      inactiveTintColor: 'lightgray',
+      activeBackgroundColor: '#333335',
+      inactiveBackgroundColor: '#323232',
+          style: {
+                backgroundColor: '#333335',
+                paddingBottom: 3
+          }
+    }}
+    >
         <Tab.Screen
           name="Home"
           component={Home}
@@ -61,7 +90,7 @@ function Navigation(){
             headerTitle: 'Home',
             headerShown: true,
             tabBarIcon:() => {
-                return <FontAwesomeIcon icon={faHome} size={20}/>
+                return <FontAwesomeIcon icon={faHome} size={20} color={'white'}/>
             }
           }}
         />
@@ -72,7 +101,7 @@ function Navigation(){
             headerTitle: 'Profile',
             headerShown: true,
             tabBarIcon:() => {
-                return <FontAwesomeIcon icon={faUserCircle} size={20}/>
+                return <FontAwesomeIcon icon={faUserCircle} size={20} color={'white'}/>
             }
           }}
         />
@@ -99,6 +128,13 @@ export default function Index() {
             headerShown: false,
           }}
         />
+        <InitialStack.Screen
+        name="HomeDetail"
+        component={HomeDetailPage}
+        options={{
+            headerTitle: 'Buy',
+        }}
+      />
     </InitialStack.Navigator>
     </NavigationContainer>
   );

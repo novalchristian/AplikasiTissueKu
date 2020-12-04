@@ -1,13 +1,13 @@
-import GunungBromo from './gunungbromo.jpeg';
-import GunungIjen from './gunungijen.jpg';
-import GunungPrau from './gunungprau.jpeg';
-import GunungRinjani from './gunungrinjani.jpg';
-import GunungSemeru from './gunungsemeru.jpg';
+import livi from './livi.png'
+import nice from './nice.png'
+import paseo from './paseo.png'
+import tessa from './tessa.png'
+import toply from './Toply.png'
 
 export {
-    GunungBromo,
-    GunungIjen,
-    GunungPrau,
-    GunungRinjani,
-    GunungSemeru
+    livi,
+    nice,
+    paseo,
+    tessa,
+    toply
 }
